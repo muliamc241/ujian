@@ -173,25 +173,25 @@
                 });
             });
 
-            $('#form_pendaftaran').submit(function(e){
-                e.preventDefault(); 
+            // $('#form_pendaftaran').submit(function(e){
+            //     e.preventDefault(); 
 
-                $.ajax({
-                    type: $(this).attr('method'),
-                    url: $(this).attr('action'),
-                    data: $(this).serializeArray(),
-                    dataType: 'json',
-                    success: function(response){
-                        alert(response.message);
-                        if (response.status == true) {
-                            $('input, select').val('').trigger('change');
-                        }
-                    },
-                    error: function(error){
-                        alert('Internal server error');
-                    }
-                });
-            });
+            //     $.ajax({
+            //         type: $(this).attr('method'),
+            //         url: $(this).attr('action'),
+            //         data: $(this).serializeArray(),
+            //         dataType: 'json',
+            //         success: function(response){
+            //             alert(response.message);
+            //             if (response.status == true) {
+            //                 $('input, select').val('').trigger('change');
+            //             }
+            //         },
+            //         error: function(error){
+            //             alert('Internal server error');
+            //         }
+            //     });
+            // });
         }
     }
 </script>

@@ -13,25 +13,26 @@ class Pendaftaran extends CI_Controller
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
 
             $data = [
-                'nama_pasien' => $this->input->post('name_pasien'),
+                'nama_pasien' => $this->input->post('nama_pasien'),
                 'nik' => $this->input->post('nik'),
                 'jenis_kelamin' => $this->input->post('jenis_kelamin'),
                 'tgl_lahir' => $this->input->post('tgl_lahir'),
                 'tgl_berobat' => $this->input->post('tgl_berobat'),
                 'id_asuransi' => $this->input->post('id_asuransi'),
-                'id_polikllinik' => $this->input->post('id_poliklinik'),
+                'id_poliklinik' => $this->input->post('id_poliklinik'),
                 'id_dokter' => $this->input->post('id_dokter'),
             ];
 
-            $pendaftaran = $this->PendaftaranModel->insert($data);
+            $this-> db ->insert('tbl_pendaftaran', $data);
+            redirect();
 
-            if ($pendaftaran) {
-                $response = ['status' => true, 'message' => 'Data pendaftaran berhasil disimpan'];
-            } else {
-                $response = ['status' => false, 'message' => 'Ooops, terjadi kesalahan ketika menyimpan data'];
-            }
+            // if ($pendaftaran) {
+            //     $response = ['status' => true, 'message' => 'Data pendaftaran berhasil disimpan'];
+            // } else {
+            //     $response = ['status' => false, 'message' => 'Ooops, terjadi kesalahan ketika menyimpan data'];
+            // }
 
-            echo json_encode($response);
+            // echo json_encode($response);
 
         } else {
 

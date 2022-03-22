@@ -12,7 +12,7 @@ class Laporan extends CI_Controller
     {
         $data['selected_tahun'] = $this->input->get('tahun') ?? date('Y');
         $data['kunjungan'] = $this->LaporanModel->kunjungan_poliklinik($data['selected_tahun']);
-
+        
         $this->template->render('admision.laporan.kunjungan_poliklinik', $data);
     }
 }

@@ -179,7 +179,7 @@
                 $.ajax({
                     type: $(this).attr('method'),
                     url: $(this).attr('action'),
-                    data: $(this).serialize(),
+                    data: $(this).serializeArray(),
                     dataType: 'json',
                     success: function(response){
                         alert(response.message);
@@ -189,7 +189,6 @@
                     },
                     error: function(error){
                         alert('Internal server error');
-                        console.log(response);
                     }
                 });
             });

@@ -47,7 +47,7 @@
                         </div>
                         <br>
 
-                        <table id="data_kunjungan" class="table table-striped table-hover table-bordered">
+                        <table id="data_kunjungan" class="table table-striped table-hover table-bordered">                           
                             <thead>
                                 <tr>
                                     <th rowspan="2">NO</th>
@@ -65,15 +65,23 @@
                             <tbody>
                                 <?php $nama_poli = ['ANAK', 'PENYAKIT DALAM', 'BEDAH', 'JANTUNG', 'MATA'] ?>
 
-                                <?php foreach($nama_poli as $key => $poli): 
-                                    
+                                <?php foreach($nama_poli as $key => $poli):
+                                    $key += 1;
+                                   
                                     ?>
                                     <tr>
-                                        <td><?= $key + 1 ?></td>
+                                        <td><?= $key ?></td>
                                         <td>POLI <?= $poli ?></td>
-                                        <?php foreach(range(1, 12) as $month): ?>
-                                            <td></td>
-                                        <?php endforeach; ?>
+                                        <?php foreach(range(1, 12) as $month):
+                                            $jumlah = $this->LaporanModel->jumlahkunjungan($key,$selected_tahun,$month);
+                                             foreach($jumlah as $row){
+                                             if(empty($row["jumlah"])){
+                                                 $row['jumlah'] = '0';
+                                             }
+                                            
+                                         ?>
+                                            <td><?= $row['jumlah'] ?></td>
+                                        <?php } endforeach; ?>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
